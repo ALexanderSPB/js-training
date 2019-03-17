@@ -47,19 +47,38 @@
 .infoPanel {
     position: absolute;
     display: none;
-    width: 100px;
-    height: 80px;
     border: solid 1px #96a2aa;
-    border-radius: 30%;
+    min-height: 105px;
+    top: 20px;
+    min-width: 130px;
+    border-radius: 10%;
     pointer-events:none
+}
+
+.infoPanelXvalue {
+    text-align: center;
+    margin: 1em 1em 0 1em;
+}
+
+.infoPanelYList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 0 1em 1em;
+}
+
+.infoPanelYList > * {
+    text-align: center;
+    margin: 1em 1em 0 0;
 }
 
 .infoPanelLine {
     position: absolute;
-    top: 80px;
-    left: 20px;
+    top: 106px;
+    left: 30px;
     width: 2px;
-    height: 430px;
+    height: 483px;
     background: #96a2aa;
 }
 
@@ -74,3 +93,53 @@
     z-index: 10;
 }
 
+.linesSelectorContainer {
+    width: 500px;
+    margin: auto;
+}
+.yCheckboxContainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.yCheckbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.yCheckboxContainerMark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+.yCheckboxContainerMark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.yCheckboxContainer input:checked ~ .yCheckboxContainerMark:after {
+    display: block;
+}
+.yCheckboxContainer .yCheckboxContainerMark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

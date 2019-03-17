@@ -69,6 +69,9 @@ class Chart {
         this.controllingContainer = document.createElement('div');
         this.controllingContainer.className = 'controllingContainer';
 
+        this.linesSelectorContainer = document.createElement('div');
+        this.linesSelectorContainer.className = 'linesSelectorContainer';
+
         this.infoPanel = document.createElement('div');
         this.infoPanel.className = 'infoPanel';
         this.infoPanelLine = document.createElement('div');
@@ -99,6 +102,7 @@ class Chart {
         container.addEventListener('mouseup', this.onLeftSliderBorderMouseUp.bind(this));
         this.sliderRightBorder.addEventListener('mousedown', this.onRightSliderBorderMouseDown.bind(this));
         container.addEventListener('mouseup', this.onRightSliderBorderMouseUp.bind(this));
+        container.addEventListener('mouseleave', this.onContainerMouseLeave.bind(this));
         this.detailedCanvas.addEventListener('mouseover', this.onDetailedCanvasMouseOver.bind(this));
         this.detailedCanvas.addEventListener('mousemove', this.onDetailedCanvasMouseMove.bind(this));
         this.detailedCanvas.addEventListener('mouseout', this.onDetailedCanvasMouseOut.bind(this));
@@ -112,12 +116,9 @@ class Chart {
         container.appendChild(this.observingCanvas);
         container.appendChild(this.controllingContainer);
         container.appendChild(this.infoPanel);
+        container.appendChild(this.linesSelectorContainer);
         document.body.appendChild(container);
         this.chartContainer = container;
-    }
-
-    initInfoPanel() {
-        t
     }
 
     onSliderMouseDown() {
@@ -198,52 +199,96 @@ class Chart {
     onDetailedCanvasMouseMove(e) {
         const xPosition = e.layerX;
         const x = this.minX + (this.maxX - this.minX) * xPosition / this.chartsWidth;
-        const xText = new Date(x).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        const xText = new Date(x).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit' });
 
         const minXIndex = this.getMinXIndex(x);
         const maxXIndex = this.getMaxXIndex(x);
         const minX = this.xPoints[minXIndex];
         const maxX = this.xPoints[maxXIndex];
-        this.infoPanel.style.left = `${e.clientX - 30}px`;
-        this.infoPanel.style.top = '50px';
+        this.infoPanel.style.left = `${e.clientX - 40}px`;
+        const infoPanelHeight = getComputedStyle(this.infoPanel).height;
+        this.infoPanel.style.top = `${125 - infoPanelHeight.slice(0, -2)}px`;
 
-        const height = this.detailedCanvasHeight - 100;
+        const height = this.detailedCanvasHeight - 50;
+
+        this.infoPanelXvalue.innerText = `${xText}`;
         this.showingLines.forEach(lineName => {
-            const prevY = this.chartLines[lineName].points[minXIndex];
-            const nextY = this.chartLines[lineName].points[maxXIndex];
+            const { points, color } = this.chartLines[lineName];
+            const prevY = points[minXIndex];
+            const nextY = points[maxXIndex];
             const y = this.getY(x, prevY, minX, nextY, maxX);
-            console.log(y);
-            console.log(y / (this.detailedCanvasHeight - 100));
             this.infoPanelLinePoints[lineName].style.top =
-                `${26 + height - y / this.maxY * height }px`;
-            this.infoPanelList[lineName].innerText = `${y}`;
+                `${30 + height - y / this.maxY * height }px`;
+            this.infoPanelList[lineName].style.color = color;
+            this.infoPanelList[lineName].innerHTML = `${Math.round(y)}<br>${lineName}`;
         })
     }
-    onDetailedCanvasMouseOut() {
+    onDetailedCanvasMouseOut(e) {
+        if (e.layerY < 0) {
+            return;
+        }
+        this.infoPanel.style.display = 'none';
+    }
+    onContainerMouseLeave() {
         this.infoPanel.style.display = 'none';
     }
 
     initInfoPanel() {
         this.infoPanelLinePoints = {};
         this.infoPanelList = {};
+
+        this.infoPanelXvalue = document.createElement('div');
+        this.infoPanelYList = document.createElement('div');
+        this.infoPanelXvalue.className = 'infoPanelXvalue';
+        this.infoPanelYList.className = 'infoPanelYList';
+        this.infoPanel.appendChild(this.infoPanelXvalue);
+        this.infoPanel.appendChild(this.infoPanelYList);
         this.showingLines.forEach(lineName => {
             const yPoint = document.createElement('div');
+            const yCheckboxContainer = document.createElement('label');
+            const yCheckboxContainerMark = document.createElement('span');
+            const yCheckbox = document.createElement('input');
+            yCheckboxContainer.className = 'yCheckboxContainer';
+            yCheckboxContainerMark.className = 'yCheckboxContainerMark';
+            yCheckbox.className = 'yCheckbox';
+            yCheckbox.type = 'checkbox';
+            yCheckbox.checked = true;
+            yCheckboxContainerMark.style.backgroundColor = this.chartLines[lineName].color;
+            yCheckbox.style.background = true;
             yPoint.className = 'line-point';
-            yPoint.style.color = this.chartLines[lineName].color;
-            const ySpan = document.createElement('span');
-            this.infoPanelLinePoints[lineName] = yPoint;
-            this.infoPanelList[lineName] = ySpan;
-            this.infoPanelLine.appendChild(yPoint);
-            this.infoPanel.appendChild(ySpan);
-        });
 
-        // this.infoPanel.innerText = xText;
+            yPoint.style.color = this.chartLines[lineName].color;
+            const yInfo = document.createElement('div');
+            this.infoPanelLinePoints[lineName] = yPoint;
+            this.infoPanelList[lineName] = yInfo;
+            yCheckboxContainer.innerText = lineName;
+            yCheckbox.style.color = this.chartLines[lineName].color;
+            yCheckbox.onclick = (e) => {
+                if (e.target.checked) {
+                    this.showingLines.push(lineName);
+                }
+                else {
+                    const index = this.showingLines.findIndex(name => name === lineName);
+                    this.showingLines.splice(index, 1);
+                }
+                this.renderDetailedCanvas();
+                this.renderObservingCanvas();
+            };
+
+            this.infoPanelLine.appendChild(yPoint);
+            this.infoPanelYList.appendChild(yInfo);
+
+            yCheckboxContainer.appendChild(yCheckbox);
+            yCheckboxContainer.appendChild(yCheckboxContainerMark);
+            this.linesSelectorContainer.appendChild(yCheckboxContainer);
+        });
     }
+
     renderDetailedCanvas() {
         const canvas = this.detailedCanvas;
         const context = canvas.getContext('2d');
         const { minX, maxX } = this;
-        const shiftY = 100;
+        const shiftY = 50;
         this.detailedCanvasWidth = canvas.width;
         this.detailedCanvasHeight = canvas.height;
         context.clearRect(0, 0, this.detailedCanvasWidth, this.detailedCanvasHeight);
@@ -275,7 +320,7 @@ class Chart {
             const xText = new Date(minX + (maxX - minX) * x / this.chartsWidth)
                 .toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
             context.font = "italic 1em \"Fira Sans\", serif";
-            context.fillText(`${yText}`, 0, y - 10);
+            context.fillText(`${Math.round(yText)}`, 0, y - 10);
             context.fillText(`${xText}`, x, this.detailedCanvasHeight - shiftY + 20);
             context.moveTo(0, y);
             context.lineTo(this.chartsWidth, y);
