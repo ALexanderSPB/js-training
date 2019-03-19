@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec1362e6-0927-4b0d-9007-95a672cc1107" name="Default" comment="" />
+    <list default="true" id="ec1362e6-0927-4b0d-9007-95a672cc1107" name="Default" comment="Except night mode">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,26 +30,10 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="217" column="21" selection-start-line="217" selection-start-column="21" selection-end-line="217" selection-end-column="21" />
+            <state relative-caret-position="403">
+              <caret line="328" column="30" selection-start-line="328" selection-start-column="30" selection-end-line="328" selection-end-column="30" />
               <folding>
                 <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
-                <element signature="n#!!block;n#buildChartElements#0;n#Chart#0" />
-                <element signature="n#!!block;n#onSliderMouseDown#0;n#Chart#0" />
-                <element signature="n#!!block;n#onSliderMouseMove#0;n#Chart#0" />
-                <element signature="n#!!block;n#onSliderMouseUp#0;n#Chart#0" />
-                <element signature="n#!!block;n#onLeftSliderBorderMouseDown#0;n#Chart#0" />
-                <element signature="n#!!block;n#onLeftSliderBorderMouseUp#0;n#Chart#0" />
-                <element signature="n#!!block;n#onLeftSliderBorderMouseMove#0;n#Chart#0" />
-                <element signature="n#!!block;n#onRightSliderBorderMouseDown#0;n#Chart#0" />
-                <element signature="n#!!block;n#onRightSliderBorderMouseUp#0;n#Chart#0" />
-                <element signature="n#!!block;n#onRightSliderBorderMouseMove#0;n#Chart#0" />
-                <element signature="n#!!block;n#onDetailedCanvasMouseOver#0;n#Chart#0" />
-                <element signature="n#!!block;n#onDetailedCanvasMouseOut#0;n#Chart#0" />
-                <element signature="n#!!block;n#initInfoPanel#1;n#Chart#0" />
-                <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
-                <element signature="n#!!block;n#getMinXIndex#0;n#Chart#0" />
-                <element signature="n#!!block;n#getMaxY#0;n#Chart#0" />
               </folding>
             </state>
           </provider>
@@ -52,8 +42,8 @@
       <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+            <state relative-caret-position="352">
+              <caret line="108" column="12" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -76,14 +66,21 @@
       <find>infoPanel</find>
       <find>showingLines</find>
       <find>yPoint</find>
+      <find>infoPanelList</find>
+      <find>initInfoPanel</find>
+      <find>controllingContainer</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/index.css" />
+        <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
   </component>
@@ -108,13 +105,12 @@
     <option name="width" value="1890" />
     <option name="height" value="900" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -126,7 +122,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -214,15 +212,34 @@
       <workItem from="1552394716234" duration="25145000" />
       <workItem from="1552463773495" duration="21619000" />
       <workItem from="1552559648154" duration="8834000" />
-      <workItem from="1552580608926" duration="11807000" />
+      <workItem from="1552580608926" duration="12110000" />
+      <workItem from="1552639595072" duration="2909000" />
+      <workItem from="1552814244628" duration="19794000" />
+      <workItem from="1552986452203" duration="8323000" />
     </task>
+    <task id="LOCAL-00001" summary="Almost done">
+      <created>1552856953655</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552856953655</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Except night mode">
+      <created>1552859245610</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552859245610</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67405000" />
+    <option name="totallyTimeSpent" value="98734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -232,12 +249,12 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32897604" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32897604" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -256,15 +273,125 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Almost done" />
+    <MESSAGE value="Except night mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Except night mode" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6400">
+          <caret line="256" column="46" lean-forward="true" selection-start-line="256" selection-start-column="46" selection-end-line="256" selection-end-column="46" />
+          <folding>
+            <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2675">
+          <caret line="107" column="24" lean-forward="true" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1325">
+          <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6200">
+          <caret line="248" column="57" selection-start-line="248" selection-start-column="57" selection-end-line="248" selection-end-column="57" />
+          <folding>
+            <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1325">
+          <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6200">
+          <caret line="248" column="57" selection-start-line="248" selection-start-column="57" selection-end-line="248" selection-end-column="57" />
+          <folding>
+            <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -285,22 +412,6 @@
           <caret line="194" column="45" selection-start-line="194" selection-start-column="45" selection-end-line="194" selection-end-column="45" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
-            <element signature="n#!!block;n#buildChartElements#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onDetailedCanvasMouseOver#0;n#Chart#0" />
-            <element signature="n#!!block;n#onDetailedCanvasMouseOut#0;n#Chart#0" />
-            <element signature="n#!!block;n#initInfoPanel#1;n#Chart#0" />
-            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
-            <element signature="n#!!block;n#getMinXIndex#0;n#Chart#0" />
-            <element signature="n#!!block;n#getMaxY#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
@@ -325,22 +436,6 @@
           <caret line="209" column="56" selection-start-line="209" selection-start-column="56" selection-end-line="209" selection-end-column="56" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
-            <element signature="n#!!block;n#buildChartElements#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onDetailedCanvasMouseOver#0;n#Chart#0" />
-            <element signature="n#!!block;n#onDetailedCanvasMouseOut#0;n#Chart#0" />
-            <element signature="n#!!block;n#initInfoPanel#1;n#Chart#0" />
-            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
-            <element signature="n#!!block;n#getMinXIndex#0;n#Chart#0" />
-            <element signature="n#!!block;n#getMaxY#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
@@ -365,30 +460,21 @@
           <caret line="105" column="19" selection-start-line="105" selection-start-column="19" selection-end-line="105" selection-end-column="19" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
-            <element signature="n#!!block;n#buildChartElements#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onDetailedCanvasMouseOver#0;n#Chart#0" />
-            <element signature="n#!!block;n#onDetailedCanvasMouseOut#0;n#Chart#0" />
-            <element signature="n#!!block;n#initInfoPanel#1;n#Chart#0" />
-            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
-            <element signature="n#!!block;n#getMinXIndex#0;n#Chart#0" />
-            <element signature="n#!!block;n#getMaxY#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chart_data.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4450">
-          <caret column="2301" selection-start-column="2301" selection-end-column="2301" />
+        <state relative-caret-position="425">
+          <caret column="1977" lean-forward="true" selection-start-column="1976" selection-end-column="1977" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -401,33 +487,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+        <state relative-caret-position="352">
+          <caret line="108" column="12" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="217" column="21" selection-start-line="217" selection-start-column="21" selection-end-line="217" selection-end-column="21" />
+        <state relative-caret-position="403">
+          <caret line="328" column="30" selection-start-line="328" selection-start-column="30" selection-end-line="328" selection-end-column="30" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
-            <element signature="n#!!block;n#buildChartElements#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onSliderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onLeftSliderBorderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseDown#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseUp#0;n#Chart#0" />
-            <element signature="n#!!block;n#onRightSliderBorderMouseMove#0;n#Chart#0" />
-            <element signature="n#!!block;n#onDetailedCanvasMouseOver#0;n#Chart#0" />
-            <element signature="n#!!block;n#onDetailedCanvasMouseOut#0;n#Chart#0" />
-            <element signature="n#!!block;n#initInfoPanel#1;n#Chart#0" />
-            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
-            <element signature="n#!!block;n#getMinXIndex#0;n#Chart#0" />
-            <element signature="n#!!block;n#getMaxY#0;n#Chart#0" />
           </folding>
         </state>
       </provider>

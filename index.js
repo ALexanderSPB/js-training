@@ -16,6 +16,7 @@ class Chart {
         this.chartsWidth = 500;
         this.sliderWidth = this.chartsWidth / 2;
         this.sliderPosition = 0;
+        this.isDayModeEnabled = true;
 
         this.parseInput();
         console.log(this);
@@ -69,6 +70,10 @@ class Chart {
         this.controllingContainer = document.createElement('div');
         this.controllingContainer.className = 'controllingContainer';
 
+        this.nightModeContainer = document.createElement('div');
+        this.nightModeContainer.innerText = 'Switch to Night Mode';
+        this.nightModeContainer.className = 'nightModeContainer';
+
         this.linesSelectorContainer = document.createElement('div');
         this.linesSelectorContainer.className = 'linesSelectorContainer';
 
@@ -106,6 +111,7 @@ class Chart {
         this.detailedCanvas.addEventListener('mouseover', this.onDetailedCanvasMouseOver.bind(this));
         this.detailedCanvas.addEventListener('mousemove', this.onDetailedCanvasMouseMove.bind(this));
         this.detailedCanvas.addEventListener('mouseout', this.onDetailedCanvasMouseOut.bind(this));
+        this.nightModeContainer.addEventListener('click', this.toggleDayMode.bind(this));
 
         this.slider.appendChild(this.sliderLeftBorder);
         this.slider.appendChild(this.sliderRightBorder);
@@ -117,6 +123,7 @@ class Chart {
         container.appendChild(this.controllingContainer);
         container.appendChild(this.infoPanel);
         container.appendChild(this.linesSelectorContainer);
+        container.appendChild(this.nightModeContainer);
         document.body.appendChild(container);
         this.chartContainer = container;
     }
@@ -207,7 +214,7 @@ class Chart {
         const maxX = this.xPoints[maxXIndex];
         this.infoPanel.style.left = `${e.clientX - 40}px`;
         const infoPanelHeight = getComputedStyle(this.infoPanel).height;
-        this.infoPanel.style.top = `${125 - infoPanelHeight.slice(0, -2)}px`;
+        this.infoPanel.style.top = `${122 - infoPanelHeight.slice(0, -2)}px`;
 
         const height = this.detailedCanvasHeight - 50;
 
@@ -310,16 +317,16 @@ class Chart {
         }
 
         context.beginPath();
-        context.strokeStyle = '#f1f1f2';
-        context.fillStyle = '#96a2aa';
+        context.strokeStyle = this.isDayModeEnabled ? '#f1f1f2' : '#313d4d';
+        context.fillStyle = this.isDayModeEnabled ? '#96a2aa' : '#546778';
         context.lineWidth = 1;
         for (let i = 0; i < 6; i++) {
             const y = (this.detailedCanvasHeight - shiftY - 50) / 5 * i + 50;
-            const x = (this.chartsWidth - 50) / 5 * i;
+            const x = (this.chartsWidth - 60) / 5 * i;
             const yText = this.maxY * (this.detailedCanvasHeight - shiftY - y) / (this.detailedCanvasHeight - shiftY);
-            const xText = new Date(minX + (maxX - minX) * x / this.chartsWidth)
+            const xText = new Date(minX + (maxX - minX) * (x + 20) / this.chartsWidth)
                 .toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            context.font = "italic 1em \"Fira Sans\", serif";
+            context.font = "19px \"Fira Sans\", serif";
             context.fillText(`${Math.round(yText)}`, 0, y - 10);
             context.fillText(`${xText}`, x, this.detailedCanvasHeight - shiftY + 20);
             context.moveTo(0, y);
@@ -369,11 +376,7 @@ class Chart {
         ctx.beginPath();
         ctx.moveTo(0, height - startingY / yFactor);
         ctx.strokeStyle = line.color;
-        ctx.lineWidth = 1;
-        ctx.shadowBlur = 1;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 2;
         for (let i = minXIndex + 1; i <= maxXIndex; i++) {
             ctx.lineTo((this.xPoints[i] - minX) / xFactor, height - line.points[i] / yFactor);
         }
@@ -414,6 +417,15 @@ class Chart {
             }
         }
         return maxY;
+    }
+
+    toggleDayMode() {
+        this.chartContainer.classList.toggle('nightMode');
+        this.isDayModeEnabled = !this.isDayModeEnabled;
+        this.nightModeContainer.innerText = this.isDayModeEnabled ?
+            'Switch to Night Mode'
+            : 'Switch to Day Mode';
+        this.renderDetailedCanvas();
     }
 
 }

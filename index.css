@@ -1,6 +1,10 @@
 .chartContainer {
     position: relative;
     padding-top: 160px;
+    padding-bottom: 40px;
+}
+.chartContainer.nightMode {
+    background-color: #242f3e;
 }
 .observingCanvas {
     display: block;
@@ -24,6 +28,9 @@
     background-color: #f5f8f9;
     opacity: 0.75;
 }
+.chartContainer.nightMode .placeholder {
+    background-color: #1f2a38;
+}
 .slider {
     position: absolute;
     display: inline;
@@ -34,6 +41,10 @@
     cursor: grab;
     z-index: 5;
 }
+
+.chartContainer.nightMode .slider {
+    border-color: #40566b;
+}
 .slider-border {
     position: absolute;
     top: -1px;
@@ -43,7 +54,9 @@
     background-color: #dbe7f0;
     cursor: e-resize;
 }
-
+.chartContainer.nightMode .slider-border {
+    background-color: #40566b;
+}
 .infoPanel {
     position: absolute;
     display: none;
@@ -52,7 +65,14 @@
     top: 20px;
     min-width: 130px;
     border-radius: 10%;
-    pointer-events:none
+    pointer-events:none;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.chartContainer.nightMode .infoPanel {
+    background: #253241;
+    color: #fff;
+    border-color: #202a37;
 }
 
 .infoPanelXvalue {
@@ -81,22 +101,27 @@
     height: 483px;
     background: #96a2aa;
 }
-
+.chartContainer.nightMode .infoPanelLine {
+    background: #3b4a5a;
+}
 .line-point {
     position: absolute;
-    left: -2px;
-    width: 4px;
-    height: 4px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
     border: 1px solid;
     background: #FFF;
     z-index: 10;
 }
+.chartContainer.nightMode .line-point {
+    background-color: #242f3e;
+}
 
 .linesSelectorContainer {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: flex-start;
     width: 500px;
     margin: auto;
@@ -104,7 +129,8 @@
 .yCheckboxContainer {
     display: inline-block;
     position: relative;
-    border: 1px solid #dbe7f0;
+    border: 1px solid #e6ecf0;
+    color: #43484b;
     border-radius: 20px;
     padding: 5px 20px 5px 55px;
     margin-bottom: 12px;
@@ -114,6 +140,10 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+.chartContainer.nightMode .yCheckboxContainer {
+    border-color: #344658;
+    color: #ffffff;
 }
 .yCheckbox {
     position: absolute;
@@ -149,4 +179,14 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.nightModeContainer {
+    width: 225px;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 25px;
+    color: #007ee5;
 }
