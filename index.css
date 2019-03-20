@@ -28,6 +28,7 @@
     display: inline-block;
     background-color: #f5f8f9;
     opacity: 0.75;
+    cursor: pointer;
 }
 .chartContainer.nightMode .placeholder {
     background-color: #1f2a38;

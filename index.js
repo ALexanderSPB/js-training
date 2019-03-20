@@ -103,6 +103,8 @@ class Chart {
         this.slider.style.left = `${this.sliderPosition}px`;
         this.sliderLeftBorder.style.left = `${this.sliderPosition}px`;
         this.sliderRightBorder.style.left = `${this.sliderPosition + this.sliderWidth - 5}px`;
+        this.leftPlaceHolder.addEventListener('click', this.onPlaceholderClick.bind(this));
+        this.rightPlaceHolder.addEventListener('click', this.onPlaceholderClick.bind(this));
         this.slider.addEventListener('mousedown', this.onSliderMouseDown.bind(this));
         container.addEventListener('mouseup', this.onSliderMouseUp.bind(this));
         this.sliderLeftBorder.addEventListener('mousedown', this.onLeftSliderBorderMouseDown.bind(this));
@@ -113,6 +115,7 @@ class Chart {
         this.detailedCanvas.addEventListener('mouseover', this.onDetailedCanvasMouseOver.bind(this));
         this.detailedCanvas.addEventListener('mousemove', this.onDetailedCanvasMouseMove.bind(this));
         this.detailedCanvas.addEventListener('mouseout', this.onDetailedCanvasMouseOut.bind(this));
+        this.detailedCanvas.addEventListener('wheel', this.onDetailedCanvasWheel.bind(this));
         this.nightModeContainer.addEventListener('click', this.toggleDayMode.bind(this));
 
         this.slider.appendChild(this.sliderLeftBorder);
@@ -130,18 +133,42 @@ class Chart {
         this.chartContainer = container;
     }
 
+    onPlaceholderClick(e) {
+        const x = e.clientX - this.controllingContainer.getBoundingClientRect().x;
+        if (x - this.sliderWidth / 2 < 0) {
+            this.sliderPosition = 0;
+        } else if (x + this.sliderWidth / 2 > this.chartsWidth) {
+            this.sliderPosition = this.chartsWidth - this.sliderWidth;
+        } else {
+            this.sliderPosition = x - this.sliderWidth / 2;
+        }
+        this.slider.style.left = `${this.sliderPosition}px`;
+
+        this.leftPlaceHolder.style.width = `${this.sliderPosition}px`;
+        this.rightPlaceHolder.style.width = `${this.chartsWidth - this.sliderWidth
+        - this.sliderPosition}px`;
+        this.rightPlaceHolder.style.left = `${this.sliderWidth + this.sliderPosition}px`;
+
+        this.minX = this.xPoints[0] + (this.sliderPosition / this.chartsWidth * this.xDiff);
+        this.maxX = this.xPoints[0] + ((this.sliderPosition + this.sliderWidth) / this.chartsWidth * this.xDiff);
+
+        this.rerenderDetailedCanvas();
+    }
+
     onSliderMouseDown(e) {
         e.stopPropagation();
         this.chartContainer.addEventListener('mousemove', this.onSliderMouseMove);
+        this.sliderMouseClickedPosition = e.layerX;
         this.mouseMoving = true;
     }
     onSliderMouseMove(e) {
         e.preventDefault();
-        if (this.sliderPosition + e.movementX < 0
-            || this.sliderPosition + this.sliderWidth + e.movementX > this.chartsWidth) {
+        const x = e.clientX - this.controllingContainer.getBoundingClientRect().x;
+        if (x - this.sliderMouseClickedPosition < 0
+            || x - this.sliderMouseClickedPosition + this.sliderWidth > this.chartsWidth) {
             return;
         }
-        this.sliderPosition += e.movementX;
+        this.sliderPosition = x - this.sliderMouseClickedPosition;
         this.slider.style.left = `${this.sliderPosition}px`;
         this.leftPlaceHolder.style.width = `${this.sliderPosition}px`;
         this.rightPlaceHolder.style.width = `${this.chartsWidth - this.sliderWidth 
@@ -169,13 +196,15 @@ class Chart {
     onLeftSliderBorderMouseMove(e) {
         e.preventDefault();
         e.stopPropagation();
-        if (this.sliderWidth - e.movementX <= 10
-            || this.sliderPosition + e.movementX < 0) {
+        const x = e.clientX - this.controllingContainer.getBoundingClientRect().x;
+        if (this.sliderPosition + this.sliderWidth - x <= 10
+            || x < 0) {
             return;
         }
 
-        this.sliderWidth -= e.movementX;
-        this.sliderPosition += e.movementX;
+
+        this.sliderWidth = this.sliderPosition + this.sliderWidth - x;
+        this.sliderPosition = x;
         this.minX = this.xPoints[0] + this.sliderPosition / this.chartsWidth * this.xDiff;
 
         this.leftPlaceHolder.style.width = `${this.sliderPosition}px`;
@@ -198,12 +227,13 @@ class Chart {
     onRightSliderBorderMouseMove(e) {
         e.preventDefault();
         e.stopPropagation();
-        if (this.sliderWidth + e.movementX <= 10
-            || this.sliderPosition + this.sliderWidth + e.movementX > this.chartsWidth) {
+        const x = e.clientX - this.controllingContainer.getBoundingClientRect().x;
+        if (x - this.sliderPosition <= 10
+            || x > this.chartsWidth) {
             return;
         }
 
-        this.sliderWidth += e.movementX;
+        this.sliderWidth = x - this.sliderPosition;
         this.maxX = this.xPoints[0] + (this.sliderPosition + this.sliderWidth) / this.chartsWidth * this.xDiff;
 
         this.rightPlaceHolder.style.width = `${this.chartsWidth - this.sliderPosition - this.sliderWidth}px`;
@@ -249,6 +279,27 @@ class Chart {
             return;
         }
         this.infoPanel.style.display = 'none';
+    }
+    onDetailedCanvasWheel(e) {
+        e.preventDefault();
+        if (this.sliderWidth + e.deltaY / 20 < 10
+            || this.sliderWidth + this.sliderPosition + e.deltaY / 40 > this.chartsWidth
+            || this.sliderPosition - e.deltaY / 40 < 0) {
+            return;
+        }
+        this.sliderWidth += e.deltaY / 20;
+        this.sliderPosition -= e.deltaY / 40;
+        this.slider.style.width = `${this.sliderWidth}px`;
+        this.slider.style.left = `${this.sliderPosition}px`;
+        this.leftPlaceHolder.style.width =`${this.sliderPosition}px`;
+        this.rightPlaceHolder.style.width = `${this.chartsWidth - this.sliderPosition - this.sliderWidth}px`;
+        this.rightPlaceHolder.style.left = `${this.sliderPosition + this.sliderWidth}px`;
+        this.sliderRightBorder.style.left = `${this.sliderWidth - 5}px`;
+
+        this.minX = this.xPoints[0] + (this.sliderPosition / this.chartsWidth * this.xDiff);
+        this.maxX = this.xPoints[0] + ((this.sliderPosition + this.sliderWidth) / this.chartsWidth * this.xDiff);
+        this.rerenderDetailedCanvas();
+        this.onDetailedCanvasMouseMove(e);
     }
     onContainerMouseLeave() {
         this.infoPanel.style.display = 'none';
