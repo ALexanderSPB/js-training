@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec1362e6-0927-4b0d-9007-95a672cc1107" name="Default" comment="Except night mode">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="ec1362e6-0927-4b0d-9007-95a672cc1107" name="Default" comment="Added night mode">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
@@ -30,10 +29,11 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="328" column="30" selection-start-line="328" selection-start-column="30" selection-end-line="328" selection-end-column="30" />
+            <state relative-caret-position="4934">
+              <caret line="296" column="38" selection-start-line="296" selection-start-column="38" selection-end-line="296" selection-end-column="38" />
               <folding>
                 <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+                <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
               </folding>
             </state>
           </provider>
@@ -42,8 +42,8 @@
       <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="108" column="12" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="12" />
+            <state relative-caret-position="-1710">
+              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -69,6 +69,9 @@
       <find>infoPanelList</find>
       <find>initInfoPanel</find>
       <find>controllingContainer</find>
+      <find>250</find>
+      <find>renderLine</find>
+      <find>linesSelectorContainer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -78,9 +81,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/index.css" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -111,6 +114,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -118,13 +122,17 @@
               <item name="charts" type="b2602c69:ProjectViewProjectNode" />
               <item name="charts" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="charts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="charts" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -215,7 +223,8 @@
       <workItem from="1552580608926" duration="12110000" />
       <workItem from="1552639595072" duration="2909000" />
       <workItem from="1552814244628" duration="19794000" />
-      <workItem from="1552986452203" duration="8323000" />
+      <workItem from="1552986452203" duration="8578000" />
+      <workItem from="1553074457698" duration="25724000" />
     </task>
     <task id="LOCAL-00001" summary="Almost done">
       <created>1552856953655</created>
@@ -231,11 +240,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552859245610</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added night mode">
+      <created>1553036728030</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553036728030</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98734000" />
+    <option name="totallyTimeSpent" value="124713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -254,7 +270,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32897604" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26865673" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -305,14 +321,40 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Almost done" />
     <MESSAGE value="Except night mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Except night mode" />
+    <MESSAGE value="Added night mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added night mode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2700">
+          <caret line="108" column="12" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8100">
+          <caret line="324" column="43" selection-start-line="324" selection-start-column="43" selection-end-line="324" selection-end-column="43" />
+          <folding>
+            <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -326,6 +368,7 @@
           <caret line="256" column="46" lean-forward="true" selection-start-line="256" selection-start-column="46" selection-end-line="256" selection-end-column="46" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
@@ -364,6 +407,7 @@
           <caret line="248" column="57" selection-start-line="248" selection-start-column="57" selection-end-line="248" selection-end-column="57" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
@@ -388,6 +432,7 @@
           <caret line="248" column="57" selection-start-line="248" selection-start-column="57" selection-end-line="248" selection-end-column="57" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
@@ -412,6 +457,7 @@
           <caret line="194" column="45" selection-start-line="194" selection-start-column="45" selection-end-line="194" selection-end-column="45" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
@@ -436,6 +482,7 @@
           <caret line="209" column="56" selection-start-line="209" selection-start-column="56" selection-end-line="209" selection-end-column="56" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
@@ -460,6 +507,7 @@
           <caret line="105" column="19" selection-start-line="105" selection-start-column="19" selection-end-line="105" selection-end-column="19" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
           </folding>
         </state>
       </provider>
@@ -468,13 +516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret column="1977" lean-forward="true" selection-start-column="1976" selection-end-column="1977" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -487,17 +528,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="108" column="12" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="12" />
+        <state relative-caret-position="-1710">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="328" column="30" selection-start-line="328" selection-start-column="30" selection-end-line="328" selection-end-column="30" />
+        <state relative-caret-position="4934">
+          <caret line="296" column="38" selection-start-line="296" selection-start-column="38" selection-end-line="296" selection-end-column="38" />
           <folding>
             <element signature="n#!!block;n#parseInput#0;n#Chart#0" />
+            <element signature="n#!!block;n#renderObservingCanvas#0;n#Chart#0" />
           </folding>
         </state>
       </provider>

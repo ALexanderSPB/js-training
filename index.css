@@ -22,6 +22,7 @@
     height: 50px;
 }
 .placeholder {
+    user-select: none;
     height: 50px;
     position: absolute;
     display: inline-block;
@@ -32,6 +33,7 @@
     background-color: #1f2a38;
 }
 .slider {
+    user-select: none;
     position: absolute;
     display: inline;
     height: 50px;
