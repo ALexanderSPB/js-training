@@ -1,7 +1,9 @@
 .chartContainer {
     position: relative;
-    padding-top: 160px;
-    padding-bottom: 40px;
+    width: 45%;
+    min-width: 500px;
+    padding: 160px 30px 40px 30px;
+    display: inline-block;
 }
 .chartContainer.nightMode {
     background-color: #242f3e;
@@ -101,7 +103,7 @@
     top: 106px;
     left: 30px;
     width: 2px;
-    height: 483px;
+    height: 485px;
     background: #96a2aa;
 }
 .chartContainer.nightMode .infoPanelLine {

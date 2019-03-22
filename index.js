@@ -15,7 +15,7 @@ class Chart {
         this.showingLines = [];
         this.chartsWidth = 500;
         this.sliderWidth = this.chartsWidth / 5;
-        this.sliderPosition = 0;
+        this.sliderPosition = this.chartsWidth / 4;
         this.isDayModeEnabled = true;
 
         this.parseInput();
@@ -101,8 +101,8 @@ class Chart {
         this.rightPlaceHolder.style.left = `${this.sliderWidth + this.sliderPosition}px`;
         this.slider.style.width = `${this.sliderWidth}px`;
         this.slider.style.left = `${this.sliderPosition}px`;
-        this.sliderLeftBorder.style.left = `${this.sliderPosition}px`;
-        this.sliderRightBorder.style.left = `${this.sliderPosition + this.sliderWidth - 5}px`;
+        this.sliderLeftBorder.style.left = `0px`;
+        this.sliderRightBorder.style.left = `${this.sliderWidth - 5}px`;
         this.leftPlaceHolder.addEventListener('click', this.onPlaceholderClick.bind(this));
         this.rightPlaceHolder.addEventListener('click', this.onPlaceholderClick.bind(this));
         this.slider.addEventListener('mousedown', this.onSliderMouseDown.bind(this));
@@ -152,7 +152,7 @@ class Chart {
         this.minX = this.xPoints[0] + (this.sliderPosition / this.chartsWidth * this.xDiff);
         this.maxX = this.xPoints[0] + ((this.sliderPosition + this.sliderWidth) / this.chartsWidth * this.xDiff);
 
-        this.rerenderDetailedCanvas();
+        this.renderDetailedCanvas();
     }
 
     onSliderMouseDown(e) {
@@ -174,10 +174,13 @@ class Chart {
         this.rightPlaceHolder.style.width = `${this.chartsWidth - this.sliderWidth 
             - this.sliderPosition}px`;
         this.rightPlaceHolder.style.left = `${this.sliderWidth + this.sliderPosition}px`;
+        if (this.animationing) {
+            return;
+        }
         this.minX = this.xPoints[0] + (this.sliderPosition / this.chartsWidth * this.xDiff);
         this.maxX = this.xPoints[0] + ((this.sliderPosition + this.sliderWidth) / this.chartsWidth * this.xDiff);
 
-        this.rerenderDetailedCanvas();
+        this.renderDetailedCanvas();
     }
     onSliderMouseUp() {
         this.chartContainer.removeEventListener('mousemove', this.onSliderMouseMove);
@@ -212,7 +215,7 @@ class Chart {
         this.slider.style.width = `${this.sliderWidth}px`;
         this.sliderRightBorder.style.left = `${this.sliderWidth - 5}px`;
 
-        this.rerenderDetailedCanvas();
+        this.renderDetailedCanvas();
     }
 
     onRightSliderBorderMouseDown(e) {
@@ -241,13 +244,14 @@ class Chart {
         this.slider.style.width = `${this.sliderWidth}px`;
         this.sliderRightBorder.style.left = `${this.sliderWidth - 5}px`;
 
-        this.rerenderDetailedCanvas();
+        this.renderDetailedCanvas();
     }
 
     onDetailedCanvasMouseOver() {
         this.infoPanel.style.display = 'block';
     }
     onDetailedCanvasMouseMove(e) {
+        const xOffset = +getComputedStyle(this.detailedCanvas).marginLeft.slice(0, -2) + +getComputedStyle(this.chartContainer).paddingLeft.slice(0, -2);
         const xPosition = e.layerX;
         const x = this.minX + (this.maxX - this.minX) * xPosition / this.chartsWidth;
         const xText = new Date(x).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit' });
@@ -256,9 +260,10 @@ class Chart {
         const maxXIndex = this.getMaxXIndex(x);
         const minX = this.xPoints[minXIndex];
         const maxX = this.xPoints[maxXIndex];
-        this.infoPanel.style.left = `${e.clientX - 40}px`;
+        this.infoPanel.style.left = `${e.layerX + xOffset - 32}px`;
         const infoPanelHeight = getComputedStyle(this.infoPanel).height;
         this.infoPanel.style.top = `${122 - infoPanelHeight.slice(0, -2)}px`;
+        this.infoPanelLine.style.top = `${+infoPanelHeight.slice(0, -2) + 1}px`;
 
         const height = this.detailedCanvasHeight - 50;
 
@@ -298,7 +303,7 @@ class Chart {
 
         this.minX = this.xPoints[0] + (this.sliderPosition / this.chartsWidth * this.xDiff);
         this.maxX = this.xPoints[0] + ((this.sliderPosition + this.sliderWidth) / this.chartsWidth * this.xDiff);
-        this.rerenderDetailedCanvas();
+        this.renderDetailedCanvas();
         this.onDetailedCanvasMouseMove(e);
     }
     onContainerMouseLeave() {
@@ -415,18 +420,23 @@ class Chart {
                 this.renderLine(context, this.chartLines[lineName], this.maxY, this.minX, this.maxX, shiftY, topShift);
             });
         };
-        const skipAnimation = this.mouseMoving || (yChange === 0);
+        const skipAnimation = (yChange === 0);
         if (skipAnimation) {
             render(this.maxY);
         } else {
-            const yGrow = yChange / 20;
+            const yGrow = this.mouseMoving ? yChange / 5 : yChange / 10;
+            if (this.animeTimeoutHandler) {
+                clearTimeout(this.animeTimeoutHandler);
+            }
+            this.animationing = true;
+            this.animeTimeoutHandler = setTimeout(() => this.animationing = false, 50);
             for (let j = 0; Math.abs(j) <= Math.abs(yChange / yGrow); j++) {
-                const timer = 400 / 30 * j;
+                const timer = this.mouseMoving ?
+                    50 / (yChange / yGrow)  * j
+                    : 100 / (yChange / yGrow)  * j;
                 const temporaryMaxY = this.prevMaxY - j * yGrow;
                 setTimeout(() => {
-                    this.animationing = true;
                     render(temporaryMaxY, yChange - j * yGrow);
-                    this.animationing = false;
                 }, timer);
             }
         }
