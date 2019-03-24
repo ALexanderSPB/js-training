@@ -21,8 +21,9 @@ class Chart {
         this.parseInput();
         console.log(this);
         this.xDiff = this.xPoints[this.xPoints.length - 1] - this.xPoints[0];
-        this.minX = this.xPoints[0];
-        this.maxX = this.xPoints[0] + (this.sliderPosition + this.sliderWidth) / this.chartsWidth * this.xDiff;
+
+        this.minX = this.xPoints[0] + (this.sliderPosition / this.chartsWidth * this.xDiff);
+        this.maxX = this.xPoints[0] + ((this.sliderPosition + this.sliderWidth) / this.chartsWidth * this.xDiff);
         this.buildChartElements();
         this.initInfoPanel();
 
